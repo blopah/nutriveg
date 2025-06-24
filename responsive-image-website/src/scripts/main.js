@@ -1,0 +1,69 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    chatForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const userMsg = chatInput.value.trim();
+        if (!userMsg) return;
+
+        appendMessage('Você', userMsg);
+        chatInput.value = '';
+
+        try {
+            console.log('Enviando mensagem para a API:', userMsg);
+
+            let userId = localStorage.getItem('userId');
+            if (!userId) {
+                userId = crypto.randomUUID();
+                localStorage.setItem('userId', userId);
+            }
+
+            const response = await fetch('https://gestor-n8n.em3gpa.easypanel.host/webhook/7eceea62-4646-41d7-95b7-d60b8658e1f5', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    message: userMsg,
+                    userId: userId
+                })
+            });
+
+            console.log('Resposta recebida:', response);
+
+            if (!response.ok) {
+                console.log('Resposta não OK:', response.status, response.statusText);
+                appendMessage('Bot', `Erro: ${response.status} ${response.statusText}`);
+                return;
+            }
+
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                const data = await response.json();
+                console.log('Dados do JSON:', data);
+                appendMessage('Bot', data.reply || 'Desculpe, não entendi.');
+            } else {
+                const text = await response.text();
+                console.log('Resposta não-JSON:', text);
+                appendMessage('Bot', text || 'Desculpe, não entendi.');
+            }
+
+        } catch (error) {
+            console.log('Erro no try/catch:', error);
+            appendMessage('Bot', 'Erro ao conectar à API.');
+        }
+    });
+
+    function appendMessage(sender, text) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('chat-message');
+        if (sender === 'Você') {
+            msgDiv.classList.add('user');
+        } else {
+            msgDiv.classList.add('bot');
+        }
+        msgDiv.textContent = text;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+});

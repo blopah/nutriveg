@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Website</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <!-- <h1>Welcome to the Responsive Image Website</h1> -->
+    </header>
+    <main>
+    <picture>
+        <source media="(max-width: 600px)" srcset="images/mobile-image.jpg">
+        <source media="(min-width: 601px)" srcset="desktop_ok.jpeg">
+        <img src="images/desktop-image.jpg" alt="Responsive Image">
+    </picture>
+    <div class="chat-overlay">
+        <div class="chat-messages" id="chat-messages"></div>
+        <form id="chat-form">
+            <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off" required />
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    </main>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
