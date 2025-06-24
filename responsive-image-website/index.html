@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Image Website</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body>
     <header>
@@ -12,9 +12,9 @@
     </header>
     <main>
     <picture>
-        <source media="(max-width: 600px)" srcset="images/mobile-image.jpg">
-        <source media="(min-width: 601px)" srcset="desktop_ok.jpeg">
-        <img src="images/desktop-image.jpg" alt="Responsive Image">
+        <source media="(max-width: 600px)" srcset="src/desktop_ok.jpeg">
+        <source media="(min-width: 601px)" srcset="src/desktop_ok.jpeg">
+        <img src="src/desktop_ok.jpeg" alt="Responsive Image">
     </picture>
     <div class="chat-overlay">
         <div class="chat-messages" id="chat-messages"></div>
@@ -24,6 +24,6 @@
         </form>
     </div>
     </main>
-    <script src="scripts/main.js"></script>
+    <script src="src/scripts/main.js"></script>
 </body>
 </html>
