@@ -17,9 +17,16 @@
         <img src="src/desktop_ok.jpeg" alt="Responsive Image">
     </picture>
     <div class="chat-overlay">
+        <div class="chat-header">
+            <img src="src/beatriz.jpg" alt="Beatriz Onofre" class="chat-avatar">
+            <span class="chat-title">Beatriz Onofre IA</span>
+            <a href="https://wa.me/11953773393" target="_blank" class="whatsapp-btn" title="Abrir WhatsApp">
+                <img src="src/logo_whats.avif" alt="WhatsApp" />
+            </a>
+        </div>
         <div class="chat-messages" id="chat-messages"></div>
         <form id="chat-form">
-            <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off" required />
+            <textarea id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off" required rows="1"></textarea>
             <button type="submit">Enviar</button>
         </form>
     </div>

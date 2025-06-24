@@ -3,6 +3,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatInput = document.getElementById('chat-input');
     const chatMessages = document.getElementById('chat-messages');
 
+    // Mensagem inicial do bot
+    appendMessage('Bot', 'Olá! Como posso ajudar você hoje?');
+
+    chatInput.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+
+    chatInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            document.getElementById('chat-form').dispatchEvent(new Event('submit', {cancelable: true, bubbles: true}));
+        }
+    });
+
     chatForm.addEventListener('submit', async function (e) {
         e.preventDefault();
         const userMsg = chatInput.value.trim();
