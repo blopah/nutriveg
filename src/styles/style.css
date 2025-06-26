@@ -42,7 +42,7 @@ picture img {
     border-radius: 24px; /* Bordas mais arredondadas */
     display: flex;
     flex-direction: column;
-    z-index: 2;
+    z-index: 99999;
     box-shadow: 0 2px 16px rgba(0,0,0,0.15);
     padding: 3px;
     font-size: 1.35em; /* Letras maiores */
