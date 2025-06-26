@@ -81,4 +81,43 @@ document.addEventListener('DOMContentLoaded', function () {
         chatMessages.appendChild(msgDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
+
+    // --- MOBILE SLIDE CHAT ---
+    const slideWrapper = document.querySelector('.mobile-slide-wrapper');
+    let startX = null;
+    let currentX = null;
+    let isDragging = false;
+
+    function isMobile() {
+        return window.innerWidth <= 600;
+    }
+
+    if (slideWrapper) {
+        slideWrapper.addEventListener('touchstart', function(e) {
+            if (!isMobile()) return;
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        slideWrapper.addEventListener('touchmove', function(e) {
+            if (!isMobile() || !isDragging) return;
+            currentX = e.touches[0].clientX;
+        });
+
+        slideWrapper.addEventListener('touchend', function(e) {
+            if (!isMobile() || !isDragging) return;
+            let deltaX = currentX - startX;
+            // Se o usuário arrasta para a esquerda
+            if (!slideWrapper.classList.contains('show-chat') && deltaX < -60) {
+                slideWrapper.classList.add('show-chat');
+            }
+            // Se o usuário arrasta para a direita
+            if (slideWrapper.classList.contains('show-chat') && deltaX > 60) {
+                slideWrapper.classList.remove('show-chat');
+            }
+            isDragging = false;
+            startX = null;
+            currentX = null;
+        });
+    }
 });

@@ -267,7 +267,90 @@ picture img {
         display: block;
     }
     /* Garante que nada fique acima da imagem */
-    body > *:not(.mobile-full-bg) {
+}
+
+.mobile-slide-wrapper {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .mobile-slide-wrapper {
+        display: flex;
+        flex-direction: row;
+        width: 200vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+        transition: transform 0.4s cubic-bezier(.77,0,.18,1);
+        will-change: transform;
+        background: #000;
+    }
+    .mobile-slide-wrapper .mobile-full-bg {
+        width: 100vw;
+        height: 100vh;
+        flex-shrink: 0;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .mobile-slide-wrapper .mobile-full-bg img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        display: block;
+    }
+    .mobile-slide-wrapper .chat-overlay {
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        font-size: 1.1em;
+        z-index: 2;
+        position: relative;
+        left: 0;
+        top: 0;
+        background: #fffffff5;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 0 !important;
+    }
+    .mobile-slide-wrapper {
+        transform: translateX(0);
+    }
+    .mobile-slide-wrapper.show-chat {
+        transform: translateX(-100vw);
+    }
+    .chat-messages {
+        flex: 1 1 auto;
+        overflow-y: auto;
+        margin-bottom: 0;
+        padding-bottom: 20vh;
+    }
+    #chat-form {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100vw;
+        background: #fffffff5;
+        padding: 8px 8px 12px 8px;
+        box-sizing: border-box;
+        z-index: 10001;
+        border-top: 1px solid #e0e0e0;
+        gap: 8px;
+        display: flex;
+    }
+    #chat-input {
+        min-height: 40px;
+        max-height: 120px;
+        font-size: 1em;
+    }
+    /* Esconde o resto do conteúdo no mobile */
+    header,
+    main > picture {
         display: none !important;
     }
 }
