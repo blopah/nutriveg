@@ -210,7 +210,7 @@ picture img {
         flex: 1 1 auto;
         overflow-y: auto;
         margin-bottom: 0;
-        padding-bottom: 70px; /* espaço para o form fixo */
+        padding-bottom: 15vh; /* espaço para o form fixo */
     }
     #chat-form {
         position: fixed;
