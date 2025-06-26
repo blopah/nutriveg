@@ -37,7 +37,7 @@ picture img {
     left: 48%;
     width: 609px;
     height: 546px;
-    background: #fff; /* Fundo branco */
+    background: #fffffff5; /* Fundo branco */
     color: #222;
     border-radius: 24px; /* Bordas mais arredondadas */
     display: flex;
@@ -87,8 +87,8 @@ picture img {
 }
 
 .whatsapp-btn img {
-    width: 4vw;
-    height: 4vw;
+    width: 100%;
+    height: 100%;
 }
 
 .whatsapp-btn:hover {
@@ -119,7 +119,7 @@ picture img {
 
 .chat-message.user {
     background: #4caf50;
-    color: #fff;
+    color: #fffffff5;
     align-self: flex-end;   /* Alinha à direita */
     margin-left: auto;
     border-bottom-right-radius: 8px;
@@ -142,7 +142,7 @@ picture img {
     font-size: 0.9em;
     padding: 8px 12px;
     border-radius: 12px;
-    border: 1px solid #ccc;
+    border: 2px solid #4caf50;
     resize: none;
     min-height: 40px;
     max-height: 120px;
@@ -163,7 +163,7 @@ picture img {
     border-radius: 12px;
     border: none;
     background: #4caf50;
-    color: #fff;
+    color: #fffffff5;
     cursor: pointer;
     font-size: 0.9em;
     transition: background 0.2s;
@@ -171,6 +171,51 @@ picture img {
 
 #chat-form button:hover {
     background: #388e3c;
+}
+
+/* textarea {
+  color: #ffffff; 
+  background-color: #1e1e1e; 
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 26px;
+} */
+
+/* textarea::placeholder {
+  color: #7b7b7b; 
+  opacity: 1;     
+} */
+
+/* Exibir só o chat em telas pequenas */
+@media (max-width: 600px) {
+    body, html {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    header,
+    picture {
+        display: none !important;
+    }
+    main {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .chat-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 90vw !important;
+        height: 90vh !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        margin: 5px !important;
+        font-size: 1.1em;
+        z-index: 9999;
+    }
 }
 
 @media (max-width: 768px) {
