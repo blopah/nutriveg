@@ -244,3 +244,30 @@ picture img {
         background-image: url('desktop_ok.jpeg');
     }
 }
+
+.mobile-full-bg {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .mobile-full-bg {
+        display: block;
+        position: fixed;
+        z-index: 10000;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+    }
+    .mobile-full-bg img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        display: block;
+    }
+    /* Garante que nada fique acima da imagem */
+    body > *:not(.mobile-full-bg) {
+        display: none !important;
+    }
+}
