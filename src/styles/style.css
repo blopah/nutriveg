@@ -356,7 +356,7 @@ picture img {
         background-position: center;
         transition: transform 0.4s cubic-bezier(.77,0,.18,1);
         will-change: transform;
-        align-content: center;
+        align-content: baseline;
     }
     .mobile-slide-wrapper.show-chat .mobile-full-bg {
         transform: translateX(-100vw);
