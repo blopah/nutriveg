@@ -39,7 +39,7 @@ picture img {
     height: 546px;
     background: #fffffff5; /* Fundo branco */
     color: #222;
-    border-radius: 24px; /* Bordas mais arredondadas */
+    border-radius: 1vw; /* Bordas mais arredondadas */
     display: flex;
     flex-direction: column;
     z-index: 99999;
@@ -249,6 +249,21 @@ picture img {
     display: none;
 }
 
+/* Torna o chat sempre visível fora do mobile */
+.mobile-slide-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    position: static;
+    top: auto;
+    left: auto;
+    z-index: auto;
+    transition: none;
+    will-change: auto;
+    background: none;
+}
+
 @media (max-width: 600px) {
     .mobile-full-bg {
         display: block;
@@ -267,10 +282,6 @@ picture img {
         display: block;
     }
     /* Garante que nada fique acima da imagem */
-}
-
-.mobile-slide-wrapper {
-    display: none;
 }
 
 @media (max-width: 600px) {
