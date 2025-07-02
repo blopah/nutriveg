@@ -268,74 +268,95 @@ picture img {
     .mobile-full-bg {
         display: block;
         position: fixed;
-        z-index: 10000;
+        z-index: 0; /* Fica atrás do chat */
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
         background: #000;
+        pointer-events: none; /* Não bloqueia interação */
     }
     .mobile-full-bg img {
         width: 100vw;
         height: 100vh;
         object-fit: cover;
         display: block;
+        pointer-events: none; /* Não bloqueia interação */
+        user-select: none;
     }
     /* Garante que nada fique acima da imagem */
+}
+
+/* Nova estrutura para o slide */
+.mobile-slide-inner {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
 }
 
 @media (max-width: 600px) {
     .mobile-slide-wrapper {
         display: flex;
-        flex-direction: row;
-        width: 200vw;
+        width: 100vw;
         height: 100vh;
         position: fixed;
         top: 0;
         left: 0;
         z-index: 10000;
+        background: #000;
+        overflow: hidden;
+    }
+    .mobile-slide-inner {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+    }
+    .mobile-full-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 4;
+        pointer-events: auto;
+        background: #000;
         transition: transform 0.4s cubic-bezier(.77,0,.18,1);
         will-change: transform;
-        background: #000;
+    }
+    .mobile-slide-wrapper.show-chat .mobile-full-bg {
+        transform: translateX(-100vw);
     }
     .mobile-slide-wrapper .mobile-full-bg {
-        width: 100vw;
-        height: 100vh;
-        flex-shrink: 0;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
+        transform: translateX(0);
     }
-    .mobile-slide-wrapper .mobile-full-bg img {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-        display: block;
-    }
-    .mobile-slide-wrapper .chat-overlay {
+    .chat-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100vw !important;
         height: 100vh !important;
         border-radius: 0 !important;
         box-shadow: none !important;
         margin: 0 !important;
         font-size: 1.1em;
-        z-index: 2;
-        position: relative;
-        left: 0;
-        top: 0;
-        background: #fffffff5;
+        z-index: 3; /* acima da imagem */
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         padding-bottom: 0 !important;
+        background: #fffffff5;
     }
-    .mobile-slide-wrapper {
-        transform: translateX(0);
+    .show-chat-btn {
+        display: flex;
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 20;
     }
-    .mobile-slide-wrapper.show-chat {
-        transform: translateX(-100vw);
+    .mobile-slide-wrapper.show-chat .show-chat-btn {
+        display: none;
     }
-    .chat-messages {
+    .mobile-slide-wrapper .chat-messages {
         flex: 1 1 auto;
         overflow-y: auto;
         margin-bottom: 0;
@@ -354,14 +375,46 @@ picture img {
         gap: 8px;
         display: flex;
     }
-    #chat-input {
+    #chat_input {
         min-height: 40px;
         max-height: 120px;
         font-size: 1em;
     }
-    /* Esconde o resto do conteúdo no mobile */
     header,
     main > picture {
         display: none !important;
+    }
+}
+
+.show-chat-btn {
+    display: none;
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 2em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.show-chat-btn:hover {
+    background: #388e3c;
+}
+
+@media (max-width: 600px) {
+    .show-chat-btn {
+        display: flex;
+    }
+    .mobile-slide-wrapper.show-chat .show-chat-btn {
+        display: none;
     }
 }

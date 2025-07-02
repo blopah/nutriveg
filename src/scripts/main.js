@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- MOBILE SLIDE CHAT ---
     const slideWrapper = document.querySelector('.mobile-slide-wrapper');
+    const slideInner = document.querySelector('.mobile-slide-inner');
+    const showChatBtn = document.querySelector('.show-chat-btn');
     let startX = null;
     let currentX = null;
     let isDragging = false;
@@ -92,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return window.innerWidth <= 600;
     }
 
-    if (slideWrapper) {
+    if (slideWrapper && slideInner) {
         slideWrapper.addEventListener('touchstart', function(e) {
             if (!isMobile()) return;
             startX = e.touches[0].clientX;
@@ -118,6 +120,14 @@ document.addEventListener('DOMContentLoaded', function () {
             isDragging = false;
             startX = null;
             currentX = null;
+        });
+    }
+
+    if (showChatBtn && slideWrapper) {
+        showChatBtn.addEventListener('click', function() {
+            if (!slideWrapper.classList.contains('show-chat')) {
+                slideWrapper.classList.add('show-chat');
+            }
         });
     }
 });

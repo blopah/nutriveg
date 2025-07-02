@@ -8,22 +8,27 @@
 </head>
 <body>
     <div class="mobile-slide-wrapper">
-        <div class="mobile-full-bg">
-            <img src="src/mobile_bg.jpg" alt="Imagem Mobile" />
-        </div>
-        <div class="chat-overlay">
-            <div class="chat-header">
-                <img src="src/beatriz.jpg" alt="Beatriz Onofre" class="chat-avatar">
-                <span class="chat-title">Beatriz Onofre IA</span>
-                <a href="https://wa.me/11953773393" target="_blank" class="whatsapp-btn" title="Abrir WhatsApp">
-                    <img src="src/logo_whats.avif" alt="WhatsApp" />
-                </a>
+        <div class="mobile-slide-inner">
+            <div class="mobile-full-bg">
+                <img src="src/mobile_bg.jpg" alt="Imagem Mobile" />
             </div>
-            <div class="chat-messages" id="chat-messages"></div>
-            <form id="chat-form">
-                <textarea id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off" required rows="1"></textarea>
-                <button type="submit">Enviar</button>
-            </form>
+            <button class="show-chat-btn" aria-label="Abrir chat">
+                💬
+            </button>
+            <div class="chat-overlay">
+                <div class="chat-header">
+                    <img src="src/beatriz.jpg" alt="Beatriz Onofre" class="chat-avatar">
+                    <span class="chat-title">Beatriz Onofre IA</span>
+                    <a href="https://wa.me/11953773393" target="_blank" class="whatsapp-btn" title="Abrir WhatsApp">
+                        <img src="src/logo_whats.avif" alt="WhatsApp" />
+                    </a>
+                </div>
+                <div class="chat-messages" id="chat-messages"></div>
+                <form id="chat-form">
+                    <textarea id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off" required rows="1"></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
         </div>
     </div>
     <header>
