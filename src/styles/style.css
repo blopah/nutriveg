@@ -77,7 +77,6 @@ picture img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #25d366;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -319,7 +318,7 @@ picture img {
         height: 100vh;
         z-index: 4;
         pointer-events: auto;
-        background-image: url('../mobile_bg.jpg');
+        background-image: url('../nutriveg_mobile_bg.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
