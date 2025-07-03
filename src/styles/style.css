@@ -2,11 +2,11 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: url('../desktop_ok.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-image: url('../desktop_ok.jpg'), url('../desktop_ok.jpg');
+    background-size: contain, cover;
+    background-position: center center, center center;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed, fixed;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -253,11 +253,11 @@ picture img {
 /* Desktop styling - usar background no body */
 @media (min-width: 601px) {
     body {
-        background-image: url('../desktop_ok.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-image: url('../desktop_ok.jpg'), url('../desktop_ok.jpg');
+        background-size: contain, cover;
+        background-position: center center, center center;
+        background-repeat: no-repeat, no-repeat;
+        background-attachment: fixed, fixed;
         height: 100vh;
         overflow: hidden;
     }
